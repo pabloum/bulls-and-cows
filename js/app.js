@@ -2,6 +2,7 @@
 $(document).ready(function() {
   var numbers = [];
   var userInput;
+  var tries = 0;
 
   for (var i = 0; i < 4; i++) {
     var n = getRandom(numbers);
@@ -10,25 +11,31 @@ $(document).ready(function() {
   }
 
   $("input").on("keyup", function(e) {
-    var correct = true;
     if(e.which == 13) {
+      var correct = true;
       userInput = this.value;
       $('input').val('');
       correct   = checkUserInput(userInput);
       if (correct) {
-        $('input, span').removeClass('error'); // Remove error class input
+        tries++;
+        $('input, span').removeClass('error');
         var bulls = countBulls(userInput, numbers);
         var cows = countCows(userInput, numbers);
         $("tbody").prepend("<tr><td>" + userInput + "</td> <td>" + cows + "</td> <td>" + bulls + "</td> </tr>");
         if (bulls === 4 && cows === 0) {
-          alert("You won !!\nIt took you 8 tries")
+          $('#tries').html(tries);
+          $('.win').fadeIn();
         }
       } else {
-        $('input, span').addClass('error'); // Add error class input
+        $('input, span').addClass('error');
         alert("incorrect input");
       }
-
     }
+  });
+
+  $('#playAgain').on('click',function() {
+    $('.win').fadeOut();
+    location.reload();
   });
 
 });
