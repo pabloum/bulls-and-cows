@@ -1,0 +1,31 @@
+body {
+  background: rgb(30, 30, 30);
+  color: white;
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+}
+
+h1 {
+  margin-top: 4%;
+  color: rgb(255, 204, 0);
+}
+
+table {
+  margin: 60px auto;
+  border-collapse: collapse;
+}
+
+thead {
+  color: rgb(255, 204, 0);
+  font-weight: bold;
+  background: rgb(55,55,55);
+}
+
+tbody, thead {
+  border: solid rgb(255, 224, 102);
+}
+
+th, td {
+  padding: 5px 48px;
+  border-left: solid rgb(255, 224, 102);
+}
