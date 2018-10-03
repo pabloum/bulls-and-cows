@@ -29,3 +29,10 @@ th, td {
   padding: 5px 48px;
   border-left: solid rgb(255, 224, 102);
 }
+
+.error {
+  border-color: red;
+  color: red;
+  font-weight: bold;
+  font-size: 25px;
+}

@@ -13,15 +13,19 @@ $(document).ready(function() {
     var correct = true;
     if(e.which == 13) {
       userInput = this.value;
+      $('input').val('');
       correct   = checkUserInput(userInput);
       if (correct) {
-        // Erase error class input
+        $('input, span').removeClass('error'); // Remove error class input
         var bulls = countBulls(userInput, numbers);
         var cows = countCows(userInput, numbers);
         $("tbody").prepend("<tr><td>" + userInput + "</td> <td>" + cows + "</td> <td>" + bulls + "</td> </tr>");
+        if (bulls === 4 && cows === 0) {
+          alert("You won !!\nIt took you 8 tries")
+        }
       } else {
-        // Add error class input
-        alert("incorrect input")
+        $('input, span').addClass('error'); // Add error class input
+        alert("incorrect input");
       }
 
     }
@@ -47,7 +51,7 @@ function countCows (userInput, numbers) {
     for (var j = 0; j < numbers.length; j++) {
       if (userInput[i] == numbers[j]) { // comparison between a char and an int, that's why I use just ==
         if (userInput[i] != numbers[i]) {
-          cows++;          
+          cows++;
         }
       }
     }
